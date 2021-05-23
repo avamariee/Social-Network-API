@@ -3,21 +3,22 @@ const router = require('express').Router();
 
 
 const {
-    getAllUser, getUserById, createUser, updateUser
+    getAllUser, getUserById, createUser, updateUser, deleteUser
 } = require('../../controllers/user-controller')
 
 // GET and POST requests for localhost:3001/api/users
 router
-.route('/')
-.get(getAllUser)
-.post(createUser);
+    .route('/')
+    .get(getAllUser)
+    .post(createUser);
 
 
 // GET ONE, PUT & DELETE for localhost:3001/api/users/:id
 
 router
-.route('/:id')
-.get(getUserById)
-.put(updateUser)
+    .route('/:id')
+    .get(getUserById)
+    .put(updateUser)
+    .delete(deleteUser)
 
 module.exports = router;

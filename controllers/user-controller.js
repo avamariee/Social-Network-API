@@ -54,21 +54,31 @@ const userController = {
             .then(dbUserData => res.json(dbUserData))
             .catch(err => res.status(400).json(err));
     },
-    
+
     // PUT - update a user by its _id
-    updateUser({params, body}, res){
+    updateUser({ params, body }, res) {
         User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
-        .then(dbUserData => {
-            if(!dbUserData){
-                res.status(404).json({message: 'No user found with this ID.'});
-                return;
-            }
-            res.json(dbUserData);
-        })
-        .catch(err => res.status(400).json(err));
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'No user found with this ID.' });
+                    return;
+                }
+                res.json(dbUserData);
+            })
+            .catch(err => res.status(400).json(err));
     },
 
-    
+    deleteUser({ params }, res) {
+        User.findOneAndDelete({ _id: params.id })
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'There is no USER with this ID.' });
+                    return;
+                }
+                res.json(dbUserData);
+            })
+            .catch(err => res.status(400).json(err));
+    }
 }
 
 
