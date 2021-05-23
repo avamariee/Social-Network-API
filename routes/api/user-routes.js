@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 
 const {
-    getAllUser, getUserById, createUser
+    getAllUser, getUserById, createUser, updateUser
 } = require('../../controllers/user-controller')
 
 // GET and POST requests for localhost:3001/api/users
@@ -18,5 +18,6 @@ router
 router
 .route('/:id')
 .get(getUserById)
+.put(updateUser)
 
 module.exports = router;
