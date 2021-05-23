@@ -41,7 +41,33 @@ const thoughtController = {
     },
     // put to update a thought by its _id
 
+    updateThought({ params, body }, res) {
+        Thought.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
+            .then(dbThoughtData => {
+                if (!dbThoughtData) {
+                    res.status(404).json({ message: 'No thought with this ID. ' });
+                    return;
+                }
+                res.json(dbThoughtData);
+            })
+            .catch(err => res.status(400).json(err));
+    },
+
     // delete to remove a thought by its _id
+
+    deleteThought({ params }, res) {
+        Thought.findOneAndDelete({ _id: params.id })
+            .then(dbThoughtData => {
+                if (!dbThoughtData) {
+                    res.status(404).json({ message: 'There is no Thought with this ID.' });
+                    return;
+                }
+                res.json(dbThoughtData);
+            })
+            .catch(err => res.status(400).json(err));
+    }
+
+
 
     // post to create a reaction store in single thought's reactions array
 
