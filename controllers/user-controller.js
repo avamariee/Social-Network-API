@@ -79,17 +79,20 @@ const userController = {
             })
             .catch(err => res.status(400).json(err));
     }
+
+    // /api/users/:userId/friends/:friendId
+
+
+    // post to add a new friend to a user's friend list
+
+    
+
+    // delete to remove a friend from a user's friend list
 }
 
 
 
 
-
-
-// DELETE - remove a user by its _id
-
-
-// remove a user's associated thoughts when deleted
 
 
 module.exports = userController;

@@ -1,5 +1,5 @@
 // starting code
-const { Schema, model, Types } = required('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 
 const ReactionSchema = new Schema({
