@@ -2,9 +2,8 @@
 const router = require('express').Router();
 
 const {
-    getThoughts, getThoughtsById, createThought, updateThought, deleteThought, createReaction, removeReaction
+    getThoughts, getThoughtsById, createThought, updateThought, deleteThought
 } = require('../../controllers/thought-controller');
-const { friendlistAdd } = require('../../controllers/user-controller');
 
 // GET and POST requests for localhost:3001/api/thoughts
 router
