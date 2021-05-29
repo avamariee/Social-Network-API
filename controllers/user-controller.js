@@ -78,16 +78,31 @@ const userController = {
                 res.json(dbUserData);
             })
             .catch(err => res.status(400).json(err));
-    }
 
+
+    },
     // /api/users/:userId/friends/:friendId
+    friendlistAdd({ params }, res) {
+
+        User.findOneAndUpdate({
+            id_: params.id
+        },
+            { $addToSet: { friends: params.friendsId } },
+            { new: true },
+
+        )
+            .then(dbUserData => res.json(dbUserData))
+            .catch(err => res.status(400).json(err));
+
+    }
 
 
     // post to add a new friend to a user's friend list
 
-    
+
 
     // delete to remove a friend from a user's friend list
+
 }
 
 
